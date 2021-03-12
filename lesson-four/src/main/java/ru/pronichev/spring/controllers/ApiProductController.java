@@ -41,7 +41,7 @@ public class ApiProductController {
     public String getJson(
             @PathVariable(value = "id") int id,
             @PathVariable(value = "type") String type
-    )  throws JsonProcessingException {
+    ) throws JsonProcessingException {
         Product product = service.getByID(id);
         switch (type) {
             case JSON:
