@@ -4,15 +4,17 @@
 
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql://192.168.151.5:5432/geek</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://192.168.50.5:6033/geek</property>
         <property name="connection.username">geek</property>
-        <property name="connection.password">geek</property>
+        <property name="connection.password">geek123!</property>
         <property name="connection.pool_size">1</property>
-        <property name="dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
 
         <mapping class="ru.pronichev.data.Product"/>
+        <mapping class="ru.pronichev.data.Customer"/>
+        <mapping class="ru.pronichev.data.Realization"/>
     </session-factory>
 </hibernate-configuration>

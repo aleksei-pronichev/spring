@@ -13,9 +13,8 @@ public class CustomerRepository extends CRUDimpl<Customer> {
     }
 
     public List<Customer> getProductsCustomers(Long productID) {
-
         String request = String.format(
-                "SELECT c FROM Customer c JOIN Realization r ON r.id = c.id WHERE r.product_id = %d",
+                "SELECT * FROM customers c JOIN realizations r ON c.id = r.customer_id where product_id = %d",
                 productID
         );
         return sqlRequest(request);

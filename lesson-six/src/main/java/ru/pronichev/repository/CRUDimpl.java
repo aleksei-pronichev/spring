@@ -55,6 +55,6 @@ public class CRUDimpl<T> implements CRUD<T> {
     }
 
     protected List<T> sqlRequest(String request) {
-        return manager.createNamedQuery(request, clazz).getResultList();
+        return manager.createNativeQuery(request, clazz).getResultList();
     }
 } 

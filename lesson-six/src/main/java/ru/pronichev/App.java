@@ -14,8 +14,8 @@ public class App {
 
         service.getCustomerProducts(2L)
                 .forEach(System.out::println);
-
-        service.getProductCustomers(1L)
+        System.out.println("------");
+        service.getProductCustomers(2L)
                 .forEach(System.out::println);
     }
 }

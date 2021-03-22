@@ -2,12 +2,13 @@ package ru.pronichev.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.pronichev.data.Customer;
+import ru.pronichev.CustomerDTO;
 import ru.pronichev.data.Product;
 import ru.pronichev.repository.CustomerRepository;
 import ru.pronichev.repository.ProductRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -24,7 +25,10 @@ public class CustomerService {
         return productRepository.getCustomerProducts(customerId);
     }
 
-    public List<Customer> getProductCustomers(Long productId) {
-        return customerRepository.getProductsCustomers(productId);
+    public List<CustomerDTO> getProductCustomers(Long productId) {
+        return customerRepository.getProductsCustomers(productId)
+                .stream()
+                .map(CustomerDTO::new)
+                .collect(Collectors.toList());
     }
 }
