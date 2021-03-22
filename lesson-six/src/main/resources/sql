@@ -1,0 +1,52 @@
+CREATE SCHEMA `geek` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+
+CREATE TABLE `geek`.`products` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(60) NOT NULL,
+  `price` INT NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `geek`.`customers` (
+    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(130) NOT NULL,
+    PRIMARY KEY (`id`));
+
+CREATE TABLE `geek`.`realizations` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `price` INT NOT NULL,
+  `date` VARCHAR(45) NOT NULL,
+  `product_id` BIGINT NOT NULL,
+  `customer_id` BIGINT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `realisations-products-key_idx` (`product_id` ASC) VISIBLE,
+  INDEX `realisations-customers-key_idx` (`customer_id` ASC) VISIBLE,
+  CONSTRAINT `realisations-products-key`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `geek`.`products` (`id`),
+  CONSTRAINT `realisations-customers-key`
+    FOREIGN KEY (`customer_id`)
+    REFERENCES `geek`.`customers` (`id`));
+
+INSERT INTO
+    `geek`.`products` (`title`, `price`)
+VALUES
+    ('Apple', '2'),
+    ('Orange', '3'),
+    ('Potato', '1'),
+    ('Banana', '4'),
+    ('Mango', '5');
+
+INSERT INTO
+    `geek`.`customers` (`name`)
+VALUES
+    ('Василий'),
+    ('Ирина');
+
+INSERT INTO
+	`geek`.`realizations` (`price`, `date`, `product_id`, `customer_id`)
+VALUES
+    ('1', '2012-06-30', '1', '2'),
+	('3', '2012-06-25', '5', '2'),
+    ('5', '2012-06-25', '4', '1'),
+    ('12', '2012-06-25', '2', '2'),
+    ('2', '2012-06-25', '1', '1');
