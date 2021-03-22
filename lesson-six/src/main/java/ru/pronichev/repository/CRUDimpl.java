@@ -1,5 +1,6 @@
 package ru.pronichev.repository;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.List;
@@ -51,5 +52,9 @@ public class CRUDimpl<T> implements CRUD<T> {
         transaction.commit();
 
         return newEntity;
+    }
+
+    protected List<T> sqlRequest(String request) {
+        return manager.createNamedQuery(request, clazz).getResultList();
     }
 } 
