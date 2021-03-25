@@ -5,4 +5,7 @@ spring:
     password: geek123!
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
-    show-sql: true
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/liquibase-changeLog.yaml
