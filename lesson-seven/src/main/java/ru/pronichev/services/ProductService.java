@@ -37,4 +37,16 @@ public class ProductService {
     public void delete(long id) {
         productRepository.deleteById(id);
     }
+
+    public List<Product> getAllMax(Integer max) {
+        return productRepository.findByPriceLessThanEqual(max);
+    }
+
+    public List<Product> getAllMin(Integer min) {
+        return productRepository.findByPriceGreaterThanEqual(min);
+    }
+
+    public List<Product> getAllMinMax(Integer min, Integer max) {
+        return productRepository.findByPriceGreaterThanEqualAndPriceLessThanEqual(min, max);
+    }
 }

@@ -27,12 +27,20 @@ public class ProductController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> getAll() {
-        return productService.getAll();
+    public List<Product> getAll(@RequestParam("min") Integer min, @RequestParam("max") Integer max) {
+        if (max == null && min == null) {
+            return productService.getAll();
+        } else if (min == null) {
+            return productService.getAllMax(max);
+        } else if (max == null) {
+            return productService.getAllMin(min);
+        }
+        return productService.getAllMinMax(min, max);
+
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product add(@RequestBody ProductDTO productDTO){
+    public Product add(@RequestBody ProductDTO productDTO) {
         return productService.save(productDTO);
     }
 
