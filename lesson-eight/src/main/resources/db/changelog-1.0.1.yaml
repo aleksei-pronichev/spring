@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: start_inserts
+      author: aleksei.pronichev
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: title
+                  value: Apple
+              - column:
+                  name: price
+                  value: 2
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: title
+                  value: Orange
+              - column:
+                  name: price
+                  value: 3
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: title
+                  value: Potato
+              - column:
+                  name: price
+                  value: 1
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: title
+                  value: Banana
+              - column:
+                  name: price
+                  value: 4
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: title
+                  value: Mango
+              - column:
+                  name: price
+                  value: 5
