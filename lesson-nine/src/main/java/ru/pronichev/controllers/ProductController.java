@@ -39,7 +39,7 @@ public class ProductController {
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product update(@RequestBody ProductDTO productDTO) {
+    public Product update(@RequestBody Product product) {
         return productService.save(productDTO);
     }
 
